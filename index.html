@@ -43,50 +43,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        .mobile-menu {
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(-10px);
-            transition: all 0.3s ease-in-out;
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: rgba(10, 15, 30, 0.98);
-            z-index: 40;
-        }
-
-        .mobile-menu.show {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 5rem;
-        }
-
-        .mobile-menu a {
-            color: white;
-            font-size: 1.25rem;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            width: 100%;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu a:hover {
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .menu-backdrop {
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-        }
+       
 
         /* Enhanced responsive styles */
         @media (max-width: 640px) {
@@ -674,139 +631,37 @@
             transition: all 0.3s ease;
         }
 
-       /* Replace your existing mobile-menu styles with these */
-.mobile-menu {
-    transition: all 0.3s ease-in-out;
-    background: rgba(17, 24, 39, 0.95);
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    margin-top: 1rem;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: auto;
-    height: auto;
-    z-index: 40;
-    margin: 0.5rem;
-}
 
-.mobile-menu .flex-col {
-    padding: 0.5rem;
-}
-
-.mobile-menu a {
-    color: #E5E7EB;
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-    margin: 0.25rem 0;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-    display: block;
-    text-align: left;
-}
-
-.mobile-menu a:hover {
-    background: rgba(59, 130, 246, 0.1);
-    color: white;
-}
-
-/* Update menu button styles */
-.menu-button {
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.menu-button:hover {
-    background: rgba(59, 130, 246, 0.1);
-}
-
-/* Ensure the header has proper positioning for dropdown */
-header nav {
-    position: relative;
-}
-        /* Additional Responsive Fixes */
-        @media (max-width: 640px) {
-            .container {
-                width: 100% !important;
-            }
-
-            .text-4xl {
-                font-size: 1.875rem !important;
-                line-height: 2.25rem !important;
-            }
-
-            .package-card {
-                padding: 1.5rem !important;
-            }
-
-            .stat-card {
-                padding: 1rem !important;
-            }
-
-            .timer-container {
-                padding: 1rem !important;
-            }
+       /* Mobile Menu */
+       .mobile-menu {
+            transition: all 0.3s ease;
+            background: rgb(17, 24, 39);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            border-top: 1px solid rgb(31, 41, 55);
         }
 
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: rgb(148, 163, 184);
+            font-weight: 400;
+            border-bottom: 1px solid rgb(31, 41, 55);
+            transition: all 0.3s ease;
+        }
 
-        /* Add these hamburger menu styles */
-.hamburger {
-    width: 24px;
-    height: 18px;
-    position: relative;
-    cursor: pointer;
-}
-
-.hamburger span {
-    display: block;
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    background: white;
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-.hamburger span:first-child {
-    top: 0;
-}
-
-.hamburger span:nth-child(2) {
-    top: 8px;
-}
-
-.hamburger span:last-child {
-    top: 16px;
-}
-
-/* Animation styles for the hamburger menu */
-.hamburger.active span:first-child {
-    transform: rotate(45deg);
-    top: 8px;
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:last-child {
-    transform: rotate(-45deg);
-    top: 8px;
-}
-
-
-
-
-
-
-
-
+        .mobile-menu a:hover {
+            background: rgb(31, 41, 55);
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <!-- Replace your entire header navigation section with this -->
+    
+<!-- Header -->
 <header class="fixed w-full top-0 z-50 bg-opacity-90 bg-gray-900 backdrop-filter backdrop-blur-lg border-b border-gray-800">
     <nav class="container mx-auto px-4 sm:px-6 py-4">
         <div class="flex justify-between items-center">
@@ -824,25 +679,24 @@ header nav {
             </div>
             
             <button class="md:hidden menu-button p-2 hover:bg-gray-800 rounded-lg transition-all duration-300" id="menuBtn">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
+                <svg class="h-6 w-6 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
             </button>
-        </div>
+           
 
-        <!-- Mobile Menu -->
-        <div class="mobile-menu hidden md:hidden animate__animated animate__fadeIn" id="mobileMenu">
-            <div class="flex flex-col space-y-2 p-4">
-                <a href="index.html" class="text-white px-4 py-2 rounded-lg bg-gray-800 transition-all duration-200">Home</a>
-                <a href="about.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">About</a>
-                <a href="market.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Market Price</a>
-                <a href="contact.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Contact</a>
-            </div>
-        </div>
-    </nav>
+<!-- Mobile Menu -->
+<div class="mobile-menu hidden md:hidden animate__animated animate__fadeIn" id="mobileMenu">
+    <div class="flex flex-col space-y-2 p-4">
+        <a href="index.html" class="text-white px-4 py-2 rounded-lg bg-gray-800 transition-all duration-200">Home</a>
+        <a href="about.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">About</a>
+        <a href="market.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Market Price</a>
+        <a href="contact.html" class="text-gray-300 hover:text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-all duration-200">Contact</a>
+    </div>
+</div>
+</div>
 </header>
+
 
         <main class="pt-24 relative z-10">
             <div class="container mx-auto px-6 py-16">
@@ -1470,10 +1324,10 @@ header nav {
             </main>
         </div>
     
-        <!-- Enhanced JavaScript with proper mobile menu functionality -->
-        <script>
-            // Mobile Menu functionality
-document.addEventListener('DOMContentLoaded', () => {
+        <!-- JS -->
+        <script> // Enhanced Countdown Timer
+                document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Menu Code
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     let isMenuOpen = false;
@@ -1493,208 +1347,148 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleMenu();
     });
 
-    // Close menu when clicking outside
     document.addEventListener('click', (e) => {
         if (isMenuOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
             toggleMenu();
         }
     });
 
-    // Close menu when clicking links
     const menuLinks = mobileMenu.querySelectorAll('a');
     menuLinks.forEach(link => {
         link.addEventListener('click', toggleMenu);
     });
 
-    // Close menu on window resize
     window.addEventListener('resize', () => {
         if (window.innerWidth >= 768 && isMenuOpen) {
             toggleMenu();
         }
     });
-});
-            // Replace the existing menu functionality with this
-const menuBtn = document.getElementById('menuBtn');
-const mobileMenu = document.getElementById('mobileMenu');
 
-menuBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-    if (!mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('animate__fadeIn');
-    } else {
-        mobileMenu.classList.remove('animate__fadeIn');
-    }
-});
+    // Countdown Timer Code
+    class CountdownTimer {
+        constructor(endDate) {
+            this.endDate = endDate;
+            this.elements = {
+                days: document.querySelector('.countdown-days'),
+                hours: document.querySelector('.countdown-hours'),
+                minutes: document.querySelector('.countdown-minutes'),
+                seconds: document.querySelector('.countdown-seconds')
+            };
+            this.previousValues = {
+                days: null,
+                hours: null,
+                minutes: null,
+                seconds: null
+            };
+        }
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.add('hidden');
-    }
-});
-            document.addEventListener('DOMContentLoaded', () => {
-                // Mobile Menu Enhancement
-                const menuBtn = document.getElementById('menuBtn');
-                const mobileMenu = document.getElementById('mobileMenu');
-                const hamburger = menuBtn.querySelector('.hamburger');
-                let isMenuOpen = false;
-    
-                function toggleMenu() {
-                    isMenuOpen = !isMenuOpen;
-                    hamburger.classList.toggle('active');
-                    mobileMenu.classList.toggle('show');
-                    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-                }
-    
-                menuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleMenu();
-                });
-    
-                // Close menu when clicking outside
-                document.addEventListener('click', (e) => {
-                    if (isMenuOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-                        toggleMenu();
-                    }
-                });
-    
-                // Close menu when clicking links
-                const menuLinks = mobileMenu.querySelectorAll('a');
-                menuLinks.forEach(link => {
-                    link.addEventListener('click', toggleMenu);
-                });
-    
-                // Close menu on window resize
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 768 && isMenuOpen) {
-                        toggleMenu();
-                    }
-                });
-    
-                // Enhanced Countdown Timer
-                class CountdownTimer {
-                    constructor(endDate) {
-                        this.endDate = endDate;
-                        this.elements = {
-                            days: document.querySelector('.countdown-days'),
-                            hours: document.querySelector('.countdown-hours'),
-                            minutes: document.querySelector('.countdown-minutes'),
-                            seconds: document.querySelector('.countdown-seconds')
-                        };
-                        this.previousValues = {
-                            days: null,
-                            hours: null,
-                            minutes: null,
-                            seconds: null
-                        };
-                    }
-    
-                    calculateTimeLeft() {
-                        const now = new Date();
-                        const diff = this.endDate - now;
-    
-                        if (diff <= 0) {
-                            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-                        }
-    
-                        return {
-                            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-                            hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                            minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-                            seconds: Math.floor((diff % (1000 * 60)) / 1000)
-                        };
-                    }
-    
-                    updateDisplay(timeLeft) {
-                        Object.entries(timeLeft).forEach(([key, value]) => {
-                            const element = this.elements[key];
-                            if (element) {
-                                const newValue = String(value).padStart(2, '0');
-                                if (this.previousValues[key] !== newValue) {
-                                    element.classList.remove('flip');
-                                    void element.offsetWidth;
-                                    element.textContent = newValue;
-                                    element.classList.add('flip');
-                                    this.previousValues[key] = newValue;
-                                }
-                            }
-                        });
-                    }
-    
-                    start() {
-                        this.update();
-                        this.interval = setInterval(() => this.update(), 1000);
-                    }
-    
-                    update() {
-                        const timeLeft = this.calculateTimeLeft();
-                        this.updateDisplay(timeLeft);
-                        if (Object.values(timeLeft).every(v => v === 0)) {
-                            clearInterval(this.interval);
-                        }
+        calculateTimeLeft() {
+            const now = new Date();
+            const diff = this.endDate - now;
+
+            if (diff <= 0) {
+                return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+            }
+
+            return {
+                days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+                hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+                seconds: Math.floor((diff % (1000 * 60)) / 1000)
+            };
+        }
+
+        updateDisplay(timeLeft) {
+            Object.entries(timeLeft).forEach(([key, value]) => {
+                const element = this.elements[key];
+                if (element) {
+                    const newValue = String(value).padStart(2, '0');
+                    if (this.previousValues[key] !== newValue) {
+                        element.classList.remove('flip');
+                        void element.offsetWidth;
+                        element.textContent = newValue;
+                        element.classList.add('flip');
+                        this.previousValues[key] = newValue;
                     }
                 }
-    
-                // Initialize countdown
-                const endDate = new Date();
-                endDate.setDate(endDate.getDate() + 7);
-                const countdown = new CountdownTimer(endDate);
-                countdown.start();
-    
-                // Stats Animation with better performance
-                const stats = document.querySelectorAll('.stat-number');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const element = entry.target;
-                            const value = parseInt(element.dataset.value);
-                            animateValue(element, 0, value, 2000);
-                            observer.unobserve(element);
-                        }
-                    });
-                }, { threshold: 0.5 });
-    
-                function animateValue(element, start, end, duration) {
-                    let startTimestamp = null;
-                    const formatter = new Intl.NumberFormat();
-    
-                    function step(timestamp) {
-                        if (!startTimestamp) startTimestamp = timestamp;
-                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                        const currentValue = Math.floor(progress * (end - start) + start);
-                        element.textContent = formatter.format(currentValue);
-    
-                        if (progress < 1) {
-                            window.requestAnimationFrame(step);
-                        }
-                    }
-    
-                    window.requestAnimationFrame(step);
-                }
-    
-                stats.forEach(stat => observer.observe(stat));
-    
-                // FAQ Functionality
-                const faqButtons = document.querySelectorAll('.faq-button');
-                faqButtons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        const answer = button.nextElementSibling;
-                        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-                        
-                        // Close all other FAQs
-                        faqButtons.forEach(otherButton => {
-                            if (otherButton !== button) {
-                                otherButton.setAttribute('aria-expanded', 'false');
-                                otherButton.nextElementSibling.classList.remove('active');
-                            }
-                        });
-                        
-                        // Toggle current FAQ
-                        button.setAttribute('aria-expanded', !isExpanded);
-                        answer.classList.toggle('active');
-                    });
-                });
             });
+        }
+
+        start() {
+            this.update();
+            this.interval = setInterval(() => this.update(), 1000);
+        }
+
+        update() {
+            const timeLeft = this.calculateTimeLeft();
+            this.updateDisplay(timeLeft);
+            if (Object.values(timeLeft).every(v => v === 0)) {
+                clearInterval(this.interval);
+            }
+        }
+    }
+
+    // Initialize countdown
+    const endDate = new Date();
+    endDate.setDate(endDate.getDate() + 7);
+    const countdown = new CountdownTimer(endDate);
+    countdown.start();
+
+    // Stats Animation
+    const stats = document.querySelectorAll('.stat-number');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const value = parseInt(element.dataset.value);
+                animateValue(element, 0, value, 2000);
+                observer.unobserve(element);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    function animateValue(element, start, end, duration) {
+        let startTimestamp = null;
+        const formatter = new Intl.NumberFormat();
+
+        function step(timestamp) {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const currentValue = Math.floor(progress * (end - start) + start);
+            element.textContent = formatter.format(currentValue);
+
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        }
+
+        window.requestAnimationFrame(step);
+    }
+
+    stats.forEach(stat => observer.observe(stat));
+
+    // FAQ Functionality
+    const faqButtons = document.querySelectorAll('.faq-button');
+    faqButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const answer = button.nextElementSibling;
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
+            
+            // Close all other FAQs
+            faqButtons.forEach(otherButton => {
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    otherButton.nextElementSibling.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            button.setAttribute('aria-expanded', !isExpanded);
+            answer.classList.toggle('active');
+        });
+    });
+});
+           
         </script>
     </body>
     </html>
